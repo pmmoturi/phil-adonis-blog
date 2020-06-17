@@ -8,7 +8,10 @@
     "start": "node server.js",
     "test": "node ace test"
   },
-  "keywords": ["adonisjs", "adonis-app"],
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
   "author": "",
   "license": "UNLICENSED",
   "private": true,
@@ -24,7 +27,22 @@
     "@adonisjs/session": "1.0.20",
     "@adonisjs/shield": "1.0.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "bootstrap": "^4.5.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "jquery-slim": "^3.0.0",
+    "merge2": "^1.4.1",
+    "turbolinks": "^5.2.0"
+  },
   "autoload": {
     "App": "./app"
   }
