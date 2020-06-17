@@ -15,13 +15,15 @@
 
 <body>
 @!section('before-nav')
-@include('partials.nav.edge')
+  @include('partials.nav.edge')
 @!section('after-nav')
 
 @!section('before-main')
-<main role="main">
+<main id="main-content" role="main">
 
- @!section('main')
+  <div class="container">
+    @!section('main')
+  </div>
 
 </main>
 

@@ -26,7 +26,9 @@
     "@adonisjs/lucid": "5.0.3",
     "@adonisjs/lucid-slugify": "^1.0.3",
     "@adonisjs/session": "1.0.20",
-    "@adonisjs/shield": "1.0.6"
+    "@adonisjs/shield": "1.0.6",
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
