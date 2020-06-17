@@ -27,22 +27,24 @@ function (_Stimulus$Controller) {
 
   _createClass(ListItem, [{
     key: "initialize",
-    value: function initialize() {
-      console.log('initialized', this.element);
-    }
+    value: function initialize() {}
   }, {
     key: "destroyItem",
     value: function destroyItem(evt) {
       evt.preventDefault();
-      console.log('clicked ', this.categoryID);
-      return axios.delete('http://localhost:3333/categories/' + this.categoryID).then(function (resp) {
+      return axios.delete("http://127.0.0.1:3333/".concat(this.path, "/").concat(this.itemId)).then(function (resp) {
         location.reload();
       });
     }
   }, {
-    key: "categoryID",
+    key: "itemId",
     get: function get() {
       return this.data.get('id');
+    }
+  }, {
+    key: "path",
+    get: function get() {
+      return this.data.get('path');
     }
   }], [{
     key: "targets",
