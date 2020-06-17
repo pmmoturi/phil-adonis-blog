@@ -15,19 +15,20 @@ const paths = {
 }
 
 gulp.task('vendor-js', function () {
-  return gulp.src([
+  const streamOne = gulp.src([
     paths.nodePath + '/jquery-slim/dist/jquery.slim.js',
     paths.nodePath + '/bootstrap/dist/js/bootstrap.bundle.js'
   ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('vendor-scripts.js'))
-    .pipe(gulp.dest('public'))
     .pipe(uglify().on('error', function () {
       console.log(err)
     }))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('public'))
-    .pipe(sourcemaps.write('.'))
+
+  const streamTwo = gulp.src([
+    paths.nodePath + '/turbolinks/dist/turbolinks.js'
+  ])
+
+  return merge(streamOne,streamTwo)
+    .pipe(concat('vendor-scripts.min.js'))
     .pipe(gulp.dest('public'))
 })
 

@@ -6,6 +6,11 @@
   <title>Hello Adonis</title>
   {{css('styles')}}
   {{css('jumbotron.css')}}
+
+  @!section('before-scripts')
+    @include('partials.common-scripts.edge')
+  @!section('after-scripts')
+
 </head>
 
 <body>
@@ -28,8 +33,5 @@
 </footer>
 @!section('after-footer')
 
-@!section('before-scripts')
-@include('partials.common-scripts.edge')
-@!section('after-scripts')
 </body>
 </html>
