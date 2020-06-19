@@ -50,9 +50,10 @@ class PostController {
 
     post_slug = post_slug || title
 
-    console.log('Writing to the DB\ntitle: '
+    /*console.log('Writing to the DB\ntitle: '
       + title + '\ncategory_id: ' + category_id
-      + '\nsummary: ' + summary)
+      + '\nsummary: ' + summary)*/
+
     const post = await Post.create({
       body, markdown, title, seo_title, seo_description,
       seo_keywords, post_slug,
