@@ -2,6 +2,7 @@
 
 const Category = use('App/Models/Category')
 const Post = use('App/Models/Post')
+const PostCreator = use('PostCreator')
 
 class PostController {
   async index({ view, response }) {
@@ -27,12 +28,41 @@ class PostController {
   async preview({ request, response }) {
     const { markdown } = request.post()
 
+    // Placeholder: Transform Markdown to HTML
+    const {body} = PostCreator.create(markdown)
     return response.status(200).json({
-      data: markdown
+      data: body
     })
   }
 
-  async store() {}
+  async store({request, response}) {
+    const {markdown, category_id} = request.post()
+
+    // transform markdown to HTML
+    // grab our post meta data from the front matter
+    console.log('Fetching attributes from the PostCreator.create')
+    let {body, attributes:{
+      title, seo_title, seo_description, seo_keywords,
+      post_slug,
+      summary, published
+    }} = PostCreator.create(markdown)
+    console.log('receiving details\ntitle:' + title)
+
+    post_slug = post_slug || title
+
+    console.log('Writing to the DB\ntitle: '
+      + title + '\ncategory_id: ' + category_id
+      + '\nsummary: ' + summary)
+    const post = await Post.create({
+      body, markdown, title, seo_title, seo_description,
+      seo_keywords, post_slug,
+      summary, published, category_id
+    }).then(data => data.toJSON())
+    console.log('Finished writing to the DB!!!')
+
+    return response.redirect('/posts/' + post.slug)
+
+  }
 
   async show({ params: { slug }, view, response }) {
     const post = await Post.findBy('slug', slug)

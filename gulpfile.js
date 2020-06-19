@@ -75,6 +75,7 @@ gulp.task('styles', function() {
   return gulp
     .src([
       paths.nodePath + '/bootstrap/dist/css/bootstrap.css',
+      paths.nodePath + '/highlightjs/styles/tomorrow.css',
       paths.stylesPath + '/**/*.scss'
     ])
     .pipe(sourcemaps.init())

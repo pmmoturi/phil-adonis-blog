@@ -6,7 +6,7 @@ class ListItem extends Stimulus.Controller {
     evt.preventDefault()
 
     return axios
-      .delete(`http://localhost:3333/${this.path}/${this.itemId}`)
+      .delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
       .then(resp => {
         location.reload()
       })

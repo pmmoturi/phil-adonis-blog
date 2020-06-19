@@ -28,7 +28,7 @@ class AddPost extends Stimulus.Controller {
 
     return axios
       .post(
-        'http://localhost:3333/posts/preview',
+        'http://127.0.0.1:3333/posts/preview',
         {
           markdown: this.markdownTarget.value
         },
