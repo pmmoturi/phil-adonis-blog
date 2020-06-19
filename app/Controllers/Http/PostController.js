@@ -76,6 +76,7 @@ class PostController {
   }
 
   async edit({view, params: { id }, response}) {
+    const categories = await Category.all().then(data => data.toJSON())
     const post = await Post.find(id).then(data => data.toJSON())
 
     response.header('Turbolinks-Location', '/posts/edit/' + id)
@@ -83,7 +84,8 @@ class PostController {
 
     return view.render('posts.editor', {
       post,
-      markdown
+      markdown,
+      categories
     })
   }
 

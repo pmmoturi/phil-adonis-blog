@@ -10,7 +10,7 @@
         <div class="container" style="margin: 2rem 0;">
             <button data-action="add-post#edit" class="btn btn-secondary btn-sm">Markdown</button>
             <button data-action="add-post#preview" class="btn btn-info btn-sm">Preview</button>
-            <button type="submit" form="post-form" class="btn btn-secondary btn-sm">Save</button>
+            <button type="submit" form="post-form" class="btn btn-secondary btn-sm">{{post ? 'Update' : 'Save'}}</button>
         </div>
 
         <div data-target="add-post.mdeditor">
@@ -27,7 +27,7 @@
                     @if(categories && categories.length > 0)
                         <select class="custom-select custom-select-lg mb-3" name="category_id">
                             @each(category in categories)
-                                <option selected value={{category.id}}>{{category.name}}</option>
+                                <option {{post.category_id == category.id ? 'selected' : ''}} value={{category.id}}>{{category.name}}</option>
                             @endeach
                         </select>
                     @else

@@ -37,5 +37,5 @@ Route.get('posts/edit/:id', 'PostController.edit')
 
 Route.post('posts/preview', 'PostController.preview')
 Route.post('posts', 'PostController.store')
-Route.post('posts/:id', 'PostController.update')
+Route.put('posts/:id', 'PostController.update')
 Route.delete('posts/:id', 'PostController.destroy')
