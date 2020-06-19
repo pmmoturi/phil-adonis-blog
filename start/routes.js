@@ -16,6 +16,7 @@
 const Route = use('Route')
 
 Route.on('/').render('index')
+
 Route.on('/page').render('page')
 
 /* Categories */
@@ -39,3 +40,4 @@ Route.post('posts/preview', 'PostController.preview')
 Route.post('posts', 'PostController.store')
 Route.put('posts/:id', 'PostController.update')
 Route.delete('posts/:id', 'PostController.destroy')
+

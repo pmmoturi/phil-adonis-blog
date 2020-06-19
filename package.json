@@ -8,10 +8,7 @@
     "start": "node server.js",
     "test": "node ace test"
   },
-  "keywords": [
-    "adonisjs",
-    "adonis-app"
-  ],
+  "keywords": ["adonisjs", "adonis-app"],
   "author": "",
   "license": "UNLICENSED",
   "private": true,
@@ -51,6 +48,7 @@
     "merge2": "1.2.1",
     "stimulus": "1.0.1",
     "turbolinks": "5.1.1"
+
   },
   "autoload": {
     "App": "./app"
