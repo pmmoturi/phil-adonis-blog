@@ -16,3 +16,28 @@
 const Route = use('Route')
 
 Route.on('/').render('index')
+
+Route.on('/page').render('page')
+
+/* Categories */
+Route.get('categories', 'CategoryController.index')
+Route.get('categories/add', 'CategoryController.create')
+Route.get('categories/:slug', 'CategoryController.show')
+Route.get('categories/edit/:id', 'CategoryController.edit')
+
+Route.post('categories', 'CategoryController.store')
+Route.put('categories/:id', 'CategoryController.update')
+Route.delete('categories/:id', 'CategoryController.destroy')
+
+/* Posts */
+
+Route.get('posts', 'PostController.index')
+Route.get('posts/add', 'PostController.create')
+Route.get('posts/:slug', 'PostController.show').as('single_post')
+Route.get('posts/edit/:id', 'PostController.edit')
+
+Route.post('posts/preview', 'PostController.preview')
+Route.post('posts', 'PostController.store')
+Route.put('posts/:id', 'PostController.update')
+Route.delete('posts/:id', 'PostController.destroy')
+
