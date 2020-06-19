@@ -75,9 +75,51 @@ class PostController {
     })
   }
 
-  async edit() {}
+  async edit({view, params: { id }, response}) {
+    const post = await Post.find(id).then(data => data.toJSON())
 
-  async update() {}
+    response.header('Turbolinks-Location', '/posts/edit/' + id)
+    const markdown = post.markdown
+
+    return view.render('posts.editor', {
+      post,
+      markdown
+    })
+  }
+
+  async update({request, response, params: { id }}) {
+    const post = await Post.find(id)
+
+    const { markdown, category_id } = request.post()
+
+    let {body, attributes:{
+      title, seo_title, seo_description, seo_keywords,
+      post_slug,
+      summary, published
+    }} = PostCreator.create(markdown)
+
+    //body, markdown, title, seo_title, seo_description,
+    //       seo_keywords, post_slug,
+    //       summary, published, category_id
+
+    post.body = body || post.body
+    post.markdown = markdown || post.markdown
+    post.title = title || post.title
+    post.seo_title = seo_title || post.seo_title
+    post.seo_description = seo_description || post.seo_description
+    post.seo_keywords = seo_keywords || post.seo_keywords
+    post.post_slug = post_slug || post.post_slug
+    post.summary = summary || post.summary
+    post.published = published || post.published
+    post.category_id = category_id || post.category_id
+
+
+    const saved = await post.save()
+
+    if (saved) {
+      return response.redirect('/posts')
+    }
+  }
 
   async destroy({ params: { id }, response }) {
     const post = await Post.find(id)

@@ -14,10 +14,10 @@
         </div>
 
         <div data-target="add-post.mdeditor">
-            <form 
-                action="/posts" 
-                method="POST" 
-                id="post-form" 
+            <form
+                action="{{post.id ? '/posts/' + post.id + '?_method=PUT' : '/posts'}}"
+                method="POST"
+                id="post-form"
                 name="md-post-editor"
                 >
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <textarea
-                        rows="25" 
+                        rows="25"
                         data-action="change->add-post#mdupdate"
                         data-target="add-post.markdown"
                         class="full-height form-control"
@@ -44,9 +44,9 @@
                         name="markdown"
                         >{{old('markdown', markdown)}}</textarea>
                 </div>
-            
+
             </form>
-        
+
         </div>
         <div data-target="add-post.mdpreview" id="post-preview" class="hidden"></div>
     </section>
