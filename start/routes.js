@@ -16,28 +16,41 @@
 const Route = use('Route')
 
 Route.on('/').render('index')
-
 Route.on('/page').render('page')
 
-/* Categories */
-Route.get('categories', 'CategoryController.index')
-Route.get('categories/add', 'CategoryController.create')
-Route.get('categories/:slug', 'CategoryController.show')
-Route.get('categories/edit/:id', 'CategoryController.edit')
+/* Login & Registration */
+//Route.on('/login').render('login')
+Route.get('/login', 'LoginController.create')
+Route.post('/login', 'LoginController.store')
+Route.post('/logout', 'LoginController.destroy')
 
-Route.post('categories', 'CategoryController.store')
-Route.put('categories/:id', 'CategoryController.update')
-Route.delete('categories/:id', 'CategoryController.destroy')
+Route.get('/register', 'RegisterController.create')
+Route.post('/register', 'RegisterController.store').validator('Register')
 
-/* Posts */
 
-Route.get('posts', 'PostController.index')
-Route.get('posts/add', 'PostController.create')
-Route.get('posts/:slug', 'PostController.show').as('single_post')
-Route.get('posts/edit/:id', 'PostController.edit')
+// These pages can only be viewed by logged in users
+Route.group( () => {
+  /* Categories */
+  Route.get('categories', 'CategoryController.index')
+  Route.get('categories/add', 'CategoryController.create')
+  Route.get('categories/:slug', 'CategoryController.show')
+  Route.get('categories/edit/:id', 'CategoryController.edit')
 
-Route.post('posts/preview', 'PostController.preview')
-Route.post('posts', 'PostController.store')
-Route.put('posts/:id', 'PostController.update')
-Route.delete('posts/:id', 'PostController.destroy')
+  Route.post('categories', 'CategoryController.store')
+  Route.put('categories/:id', 'CategoryController.update')
+  Route.delete('categories/:id', 'CategoryController.destroy')
+
+  /* Posts */
+
+  Route.get('posts', 'PostController.index')
+  Route.get('posts/add', 'PostController.create')
+  Route.get('posts/:slug', 'PostController.show').as('single_post')
+  Route.get('posts/edit/:id', 'PostController.edit')
+
+  Route.post('posts/preview', 'PostController.preview')
+  Route.post('posts', 'PostController.store')
+  Route.put('posts/:id', 'PostController.update')
+  Route.delete('posts/:id', 'PostController.destroy')
+
+}).middleware(['auth'])
 
