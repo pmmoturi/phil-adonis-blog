@@ -55,7 +55,8 @@ function (_Stimulus$Controller) {
       var baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333';
       console.log('The Base URL: ' + baseUrl + '/posts/preview');
       return axios.post( //'http://127.0.0.1:3333/posts/preview',
-      baseUrl + '/posts/preview', {
+      'https://phil1-blog.herokuapp.com/posts/preview', //baseUrl + '/posts/preview',
+      {
         markdown: this.markdownTarget.value
       }, {
         headers: {
@@ -121,7 +122,8 @@ function (_Stimulus$Controller) {
       var baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333';
       console.log('The Base URL: ' + baseUrl + '/' + this.path + '/' + this.itemId);
       return axios //.delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
-      .delete("http://".concat(baseUrl, "/").concat(this.path, "/").concat(this.itemId)).then(function (resp) {
+      .delete("https://phil1-blog.herokuapp.com/".concat(this.path, "/").concat(this.itemId)) //.delete(`http://${baseUrl}/${this.path}/${this.itemId}`)
+      .then(function (resp) {
         location.reload();
       });
     }
