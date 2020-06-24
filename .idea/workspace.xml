@@ -26,14 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4537bc78-6664-4493-acfa-0a5b602143e8" name="Default Changelist" comment="Basic Authentication: Login page, Registration page. Restricted access to Admin pages to logged in users only.">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/AddPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/AddPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/ListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/ListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/nav.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/nav.edge" afterDir="false" />
-    </list>
+    <list default="true" id="4537bc78-6664-4493-acfa-0a5b602143e8" name="Default Changelist" comment="Basic Authentication: Login page, Registration page. Restricted access to Admin pages to logged in users only." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +103,7 @@
       <workItem from="1592310444034" duration="647000" />
       <workItem from="1592311724297" duration="79000" />
       <workItem from="1592311824086" duration="38283000" />
-      <workItem from="1592465126406" duration="49627000" />
+      <workItem from="1592465126406" duration="49965000" />
     </task>
     <task id="LOCAL-00001" summary="Changes to the start branch from tutorial 1 &amp; 2.">
       <created>1592380604236</created>
