@@ -9,8 +9,7 @@ class ListItem extends Stimulus.Controller {
 
     return axios
       //.delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
-      //.delete(`http://${Env.get('BASE_URL')}/${this.path}/${this.itemId}`)
-      .delete(`http://${process.env('BASE_URL')}/${this.path}/${this.itemId}`)
+      .delete(`http://${Env.get('BASE_URL', process.env('BASE_URL'))}/${this.path}/${this.itemId}`)
       .then(resp => {
         location.reload()
       })
