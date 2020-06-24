@@ -1,3 +1,5 @@
+const Env = use('Env')
+
 class AddPost extends Stimulus.Controller {
   static get targets() {
     return [
@@ -28,7 +30,9 @@ class AddPost extends Stimulus.Controller {
 
     return axios
       .post(
-        'http://127.0.0.1:3333/posts/preview',
+        //'http://127.0.0.1:3333/posts/preview',
+        //Env.get('BASE_URL') + '/posts/preview',
+        process.env('BASE_URL') + '/posts/preview',
         {
           markdown: this.markdownTarget.value
         },
