@@ -27,9 +27,9 @@ class AddPost extends Stimulus.Controller {
       return
     }
 
-    const baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333'
+    //const baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333'
 
-    console.log('The Base URL: ' + baseUrl + '/posts/preview')
+    //console.log('The Base URL: ' + baseUrl + '/posts/preview')
 
 
 
@@ -37,6 +37,7 @@ class AddPost extends Stimulus.Controller {
       .post(
         //'http://127.0.0.1:3333/posts/preview',
         'https://phil1-blog.herokuapp.com/posts/preview',
+        ///posts/preview',
         //baseUrl + '/posts/preview',
         {
           markdown: this.markdownTarget.value
