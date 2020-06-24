@@ -14,8 +14,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Env = use('Env');
-
 var AddPost =
 /*#__PURE__*/
 function (_Stimulus$Controller) {
@@ -54,9 +52,10 @@ function (_Stimulus$Controller) {
         return;
       }
 
-      console.log('The Base URL: ' + Env.get('BASE_URL', process.env('BASE_URL')) + '/posts/preview');
+      var baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333';
+      console.log('The Base URL: ' + baseUrl + '/posts/preview');
       return axios.post( //'http://127.0.0.1:3333/posts/preview',
-      Env.get('BASE_URL', process.env('BASE_URL')) + '/posts/preview', {
+      baseUrl + '/posts/preview', {
         markdown: this.markdownTarget.value
       }, {
         headers: {
@@ -119,8 +118,10 @@ function (_Stimulus$Controller) {
     key: "destroyItem",
     value: function destroyItem(evt) {
       evt.preventDefault();
+      var baseUrl = process.env('BASE_URL') || 'http://127.0.0.1:3333';
+      console.log('The Base URL: ' + baseUrl + '/' + this.path + '/' + this.itemId);
       return axios //.delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
-      .delete("http://".concat(Env.get('BASE_URL', process.env('BASE_URL')), "/").concat(this.path, "/").concat(this.itemId)).then(function (resp) {
+      .delete("http://".concat(baseUrl, "/").concat(this.path, "/").concat(this.itemId)).then(function (resp) {
         location.reload();
       });
     }
