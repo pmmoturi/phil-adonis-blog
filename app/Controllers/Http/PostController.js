@@ -5,12 +5,12 @@ const Post = use('App/Models/Post')
 const PostCreator = use('PostCreator')
 
 class PostController {
-  async index({ view, response }) {
+  async index({ view, auth, response }) {
     response.header('Turbolinks-Location', '/posts')
 
     const posts = await Post.all().then(data => data.toJSON())
 
-    return view.render('posts.posts', { posts })
+    return view.render('posts.posts', { username: auth.user.username, posts })
   }
 
   async create({ view, response }) {

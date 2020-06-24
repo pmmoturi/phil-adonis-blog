@@ -1,0 +1,31 @@
+@layout('layouts.main')
+
+@section('main')
+
+  <form class="form-signin" method="POST" action="/login">
+
+    {{csrfField()}}
+
+    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+           autofocus>
+    @if(hasErrorFor('email'))
+      <div class="alert alert-danger mb-2 mt-2">{{ getErrorFor('email') }}</div>
+    @endif
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    @if(hasErrorFor('password'))
+      <div class="alert alert-danger mb-2 mt-2">{{ getErrorFor('password') }}</div>
+    @endif
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+  <a href="#">Forgot password</a>
+
+@endsection

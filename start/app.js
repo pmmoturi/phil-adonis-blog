@@ -20,6 +20,7 @@ const providers = [
   '@adonisjs/session/providers/SessionProvider',
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/lucid-slugify/providers/SlugifyProvider',
+  '@adonisjs/validator/providers/ValidatorProvider',
   path.join(__dirname,'..','providers','PostCreator/provider')
 ]
 

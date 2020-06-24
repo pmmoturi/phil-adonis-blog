@@ -8,7 +8,10 @@
     "start": "node server.js",
     "test": "node ace test"
   },
-  "keywords": ["adonisjs", "adonis-app"],
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
   "author": "",
   "license": "UNLICENSED",
   "private": true,
@@ -24,10 +27,12 @@
     "@adonisjs/lucid-slugify": "1.0.2",
     "@adonisjs/session": "1.0.20",
     "@adonisjs/shield": "1.0.6",
+    "@adonisjs/validator": "^5.0.6",
     "front-matter": "^4.0.2",
     "highlightjs": "^9.16.2",
     "marked": "^1.1.0",
-    "mysql": "2.15.0"
+    "mysql": "2.15.0",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.42",
@@ -48,7 +53,6 @@
     "merge2": "1.2.1",
     "stimulus": "1.0.1",
     "turbolinks": "5.1.1"
-
   },
   "autoload": {
     "App": "./app"
