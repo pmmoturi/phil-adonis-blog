@@ -28,6 +28,8 @@ class AddPost extends Stimulus.Controller {
       return
     }
 
+    console.log('The Base URL: ' + Env.get('BASE_URL', process.env('BASE_URL')) + '/posts/preview')
+
     return axios
       .post(
         //'http://127.0.0.1:3333/posts/preview',
