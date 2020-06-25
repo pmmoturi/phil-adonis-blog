@@ -77,12 +77,14 @@ class PostController {
   }
 
   async show({ params: { slug }, view, response }) {
+    const categories = await Category.all().then(data => data.toJSON())
     const post = await Post.findBy('slug', slug)
 
     response.header('Turbolinks-Location', '/posts/' + slug)
 
     return view.render('posts.post', {
-      post
+      post,
+      categories
     })
   }
 

@@ -1,6 +1,8 @@
 'use strict'
 
 const Category = use('App/Models/Category')
+const Post = use('App/Models/Post')
+const Database = use('Database')
 
 class CategoryController {
   async index({ view, response }) {
@@ -28,14 +30,23 @@ class CategoryController {
   }
 
   async show({ view, params: { slug }, response }) {
+    const categories = await Category.all().then(data => data.toJSON())
+
     const category = await Category.findBy('slug', slug).then(data =>
       data.toJSON()
     )
+    /*const posts = await Post.findBy('category_id', category.id).then(data =>
+      data.toJSON()
+    )
+    console.log('Posts: ' + posts.toString())*/
+    const posts = await Database.table('posts').select('*').where('category_id','=',category.id)
 
     response.header('Turbolinks-Location', '/categories/' + category.slug)
 
     return view.render('categories.category', {
-      category
+      category,
+      posts,
+      categories
     })
   }
 
