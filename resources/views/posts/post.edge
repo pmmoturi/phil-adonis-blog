@@ -11,6 +11,13 @@
 @endsection
 
 @section('main')
+  @if(auth.user.id == post.user_id)
+    <div class="btlList__actions">
+      <a href="/posts/edit/{{post.id}}">
+        <span data-feather="edit" ></span>Edit This post
+      </a>
+    </div>
+  @endif
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">{{post.title}}</h1>

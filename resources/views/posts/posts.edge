@@ -1,8 +1,5 @@
 @layout('layouts.main')
 
-@section('before-main')
-  <h3>Username: {{username}}</h3>
-@endsection
 
 @section('main')
 <div class="row btlList">
@@ -15,12 +12,14 @@
                     data-list-item-path="posts"
                     >
                     <div class="">
-                        <a href="{{ route('single_post', {slug: post.slug}) }}"     class="list-group-item-action">
-                            {{ post.title }}
-                            @if(post.summary)
-                                - {{post.summary}}
-                            @endif
-                        </a>
+                      <ul style="list-style-type:none;">
+                        <li>
+                          <a href="/posts/{{post.slug}}"> {{post.title}}</a>
+                        </li>
+                        <li>{{post.summary}}</li>
+                        <li><b>Views: {{post.views_no}}</b></li>
+                      </ul>
+
                     </div>
                     <div class="btlList__actions">
                       <a href="/posts/edit/{{post.id}}">
