@@ -54,8 +54,8 @@ function (_Stimulus$Controller) {
       //console.log('The Base URL: ' + baseUrl + '/posts/preview')
 
 
-      return axios.post( //'http://127.0.0.1:3333/posts/preview',
-      'https://phil1-blog.herokuapp.com/posts/preview', ///posts/preview',
+      return axios.post('/posts/preview', //'http://127.0.0.1:3333/posts/preview',
+      //'https://phil1-blog.herokuapp.com/posts/preview',
       //baseUrl + '/posts/preview',
       {
         markdown: this.markdownTarget.value

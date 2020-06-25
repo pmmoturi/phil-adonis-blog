@@ -14,8 +14,8 @@
 */
 
 const Route = use('Route')
-
-Route.on('/').render('index')
+Route.get('/', 'PostController.homePreview')
+//Route.on('/').render('index')
 Route.on('/page').render('page')
 
 /* Login & Registration */
@@ -26,7 +26,6 @@ Route.post('/logout', 'LoginController.destroy')
 
 Route.get('/register', 'RegisterController.create')
 Route.post('/register', 'RegisterController.store').validator('Register')
-
 
 // These pages can only be viewed by logged in users
 Route.group( () => {
@@ -44,7 +43,6 @@ Route.group( () => {
 
   Route.get('posts', 'PostController.index')
   Route.get('posts/add', 'PostController.create')
-  Route.get('posts/:slug', 'PostController.show').as('single_post')
   Route.get('posts/edit/:id', 'PostController.edit')
 
   Route.post('posts/preview', 'PostController.preview')
@@ -53,4 +51,6 @@ Route.group( () => {
   Route.delete('posts/:id', 'PostController.destroy')
 
 }).middleware(['auth'])
+
+Route.get('posts/:slug', 'PostController.show').as('single_post')
 

@@ -35,9 +35,9 @@ class AddPost extends Stimulus.Controller {
 
     return axios
       .post(
+        '/posts/preview',
         //'http://127.0.0.1:3333/posts/preview',
-        'https://phil1-blog.herokuapp.com/posts/preview',
-        ///posts/preview',
+        //'https://phil1-blog.herokuapp.com/posts/preview',
         //baseUrl + '/posts/preview',
         {
           markdown: this.markdownTarget.value
