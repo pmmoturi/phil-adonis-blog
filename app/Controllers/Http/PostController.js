@@ -3,12 +3,16 @@
 const Category = use('App/Models/Category')
 const Post = use('App/Models/Post')
 const PostCreator = use('PostCreator')
+const User = use('App/Models/User')
+const Database = use('Database')
 
 class PostController {
   async index({ view, auth, response }) {
     response.header('Turbolinks-Location', '/posts')
 
-    const posts = await Post.all().then(data => data.toJSON())
+    //const posts = await Post.all().then(data => data.toJSON())
+    const posts = await Database.table('posts').select('*').where('user_id','=',auth.user.id)
+      //.then(data => data.toJSON())
 
     return view.render('posts.posts', { username: auth.user.username, posts })
   }
@@ -84,13 +88,15 @@ class PostController {
     post.views_no = post.views_no + 1
     const saved = await post.save()
 
-
+    const user_id = post.user_id
+    const user = await User.findBy('id', user_id)
 
     response.header('Turbolinks-Location', '/posts/' + slug)
 
     return view.render('posts.post', {
       post,
-      categories
+      categories,
+      user
     })
   }
 
