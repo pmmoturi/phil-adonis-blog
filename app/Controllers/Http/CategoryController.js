@@ -50,6 +50,20 @@ class CategoryController {
     })
   }
 
+  async showAllPublic({ view, auth, response }) {
+    const categories = await Category.all().then(data => data.toJSON())
+
+    //const posts = await Database.table('posts').select('*').where('category_id','=',category.id)
+
+    response.header('Turbolinks-Location', '/categories/all')
+
+    return view.render('categories.all', {
+      //posts,
+      categories,
+      auth
+    })
+  }
+
   async edit({ view, params: { id }, response }) {
     const category = await Category.find(id).then(data => data.toJSON())
 

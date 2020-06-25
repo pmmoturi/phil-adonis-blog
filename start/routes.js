@@ -15,6 +15,7 @@
 
 const Route = use('Route')
 Route.get('/', 'PostController.homePreview')
+Route.get('categories/all', 'CategoryController.showAllPublic')
 //Route.on('/').render('index')
 Route.on('/page').render('page')
 
@@ -32,7 +33,6 @@ Route.group( () => {
   /* Categories */
   Route.get('categories', 'CategoryController.index')
   Route.get('categories/add', 'CategoryController.create')
-  Route.get('categories/:slug', 'CategoryController.show')
   Route.get('categories/edit/:id', 'CategoryController.edit')
 
   Route.post('categories', 'CategoryController.store')
@@ -53,4 +53,5 @@ Route.group( () => {
 }).middleware(['auth'])
 
 Route.get('posts/:slug', 'PostController.show').as('single_post')
+Route.get('categories/:slug', 'CategoryController.show')
 

@@ -1,0 +1,31 @@
+@layout('layouts.main')
+
+
+@section('main')
+
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">All Categories</h1>
+      <p class="lead my-3">Search for all categories</p>
+
+    </div>
+  </div>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          @each(category in categories)
+          <div class="col-md-4">
+            <h2>{{category.name}}</h2>
+            <p>{{category.description}} </p>
+            <p><a class="btn btn-secondary" href="/categories/{{category.slug}}" role="button">View details &raquo;
+              </a></p>
+          </div>
+          @endeach
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+      @endsection

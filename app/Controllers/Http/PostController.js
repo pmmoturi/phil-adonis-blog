@@ -13,14 +13,14 @@ class PostController {
     return view.render('posts.posts', { username: auth.user.username, posts })
   }
 
-  async homePreview({ view, response }) {
+  async homePreview({ view, auth, response }) {
     response.header('Turbolinks-Location', '/')
 
     //const posts = await Post.all().then(data => data.toJSON())
     const categories = await Category.all().then(data => data.toJSON())
     const posts = await Post.pickInverse(3).then(data => data.toJSON())
 
-    return view.render('index', { posts, categories })
+    return view.render('index', { posts, auth, categories })
   }
 
 

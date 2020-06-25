@@ -114,7 +114,7 @@ class LoginController {
   async destroy ({ params, request, auth, response }) {
     await auth.logout()
 
-    return response.redirect('/login')
+    return response.redirect('/')
   }
 }
 
