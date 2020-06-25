@@ -18,7 +18,7 @@ class PostController {
 
     //const posts = await Post.all().then(data => data.toJSON())
     const categories = await Category.all().then(data => data.toJSON())
-    const posts = await Post.pickInverse(3).then(data => data.toJSON())
+    const posts = await Post.pickInverse(10).then(data => data.toJSON())
 
     return view.render('index', { posts, auth, categories })
   }
@@ -46,7 +46,7 @@ class PostController {
     })
   }
 
-  async store({request, response}) {
+  async store({request, auth, response}) {
     const {markdown, category_id} = request.post()
 
     // transform markdown to HTML
@@ -64,11 +64,12 @@ class PostController {
     /*console.log('Writing to the DB\ntitle: '
       + title + '\ncategory_id: ' + category_id
       + '\nsummary: ' + summary)*/
+    const user_id = auth.user.id
 
     const post = await Post.create({
       body, markdown, title, seo_title, seo_description,
       seo_keywords, post_slug,
-      summary, published, category_id
+      summary, published, category_id, user_id
     }).then(data => data.toJSON())
     console.log('Finished writing to the DB!!!')
 
@@ -79,6 +80,11 @@ class PostController {
   async show({ params: { slug }, view, response }) {
     const categories = await Category.all().then(data => data.toJSON())
     const post = await Post.findBy('slug', slug)
+
+    post.views_no = post.views_no + 1
+    const saved = await post.save()
+
+
 
     response.header('Turbolinks-Location', '/posts/' + slug)
 

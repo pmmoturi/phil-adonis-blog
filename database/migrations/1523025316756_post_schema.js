@@ -16,6 +16,7 @@ class PostSchema extends Schema {
       table.text('body')
       table.string('summary')
       table.text('markdown')
+      table.integer('views_no').defaultTo(0)
       table
         .integer('category_id')
         .unsigned()
