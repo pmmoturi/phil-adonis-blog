@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
 
-  <title>Hello Adonis</title>
+  @!section('title')
 
   {{ css('styles')}}
   {{ css('jumbotron')}}
@@ -11,6 +11,7 @@
         @include('partials.common-scripts')
     @!section('after-scripts')
 
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
 
@@ -20,21 +21,7 @@
 
     @!section('after-nav1')
 
-    @section('after-nav2')
-      <b:if cond='data:blog.pageType == &quot;item&quot;'>
-        <span style='font-size: 15px;font-weight:bold;'>Share : </span>
-        <p align='center'>
-        <div class='fb-like' data-action='like' data-layout='button_count' data-share='true' data-show-faces='false'/>
-        <a href="http://twitter.com/share" class="twitter-share-button" data-count-value="horizontal">Tweet</a>
-        <script src='http://platform.twitter.com/widgets.js' type="text/javascript"></script>
-        </p>
-      </b:if>
-      <div class="a2a_kit a2a_default_style">
-        <a class="a2a_button_linkedin_share"></a>
-      </div>
-
-      <script async src="https://static.addtoany.com/menu/page.js"></script>
-    @endsection
+    @!section('after-nav2')
 
     @!section('before-main')
 

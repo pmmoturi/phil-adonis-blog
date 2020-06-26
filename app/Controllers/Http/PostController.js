@@ -81,12 +81,21 @@ class PostController {
 
   }
 
-  async show({ params: { slug }, view, response }) {
+  async show({ params: { slug }, view, auth, response }) {
     const categories = await Category.all().then(data => data.toJSON())
     const post = await Post.findBy('slug', slug)
 
-    post.views_no = post.views_no + 1
-    const saved = await post.save()
+    // auto-increment when the views are being done by people other than the author
+    if (auth && auth.user && auth.user.id) {
+      if (auth.user.id != post.user_id) {
+        post.views_no = post.views_no + 1
+        const saved = await post.save()
+      }
+    } else {
+      post.views_no = post.views_no + 1
+      const saved = await post.save()
+    }
+
 
     const user_id = post.user_id
     const user = await User.findBy('id', user_id)
