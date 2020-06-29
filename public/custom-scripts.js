@@ -122,8 +122,8 @@ function (_Stimulus$Controller) {
       //console.log('The Base URL: ' + baseUrl + '/' + this.path + '/' + this.itemId)
 
       return axios //.delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
-      .delete("https://phil1-blog.herokuapp.com/".concat(this.path, "/").concat(this.itemId)) //.delete(`http://${baseUrl}/${this.path}/${this.itemId}`)
-      .then(function (resp) {
+      //.delete(`https://phil1-blog.herokuapp.com/${this.path}/${this.itemId}`)
+      .delete("/".concat(this.path, "/").concat(this.itemId)).then(function (resp) {
         location.reload();
       });
     }

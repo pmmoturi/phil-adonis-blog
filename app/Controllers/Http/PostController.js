@@ -109,12 +109,21 @@ class PostController {
     })
   }
 
-  async edit({view, params: { id }, response}) {
+  async edit({view, params: { id }, auth, response}) {
     const categories = await Category.all().then(data => data.toJSON())
     const post = await Post.find(id).then(data => data.toJSON())
 
     response.header('Turbolinks-Location', '/posts/edit/' + id)
     const markdown = post.markdown
+
+    // If user isn't authorised to edit this page, then redirect them to the view post page
+    if (auth && auth.user && auth.user.id) {
+      if (auth.user.id != post.user_id) {
+        response.redirect('/posts/' + post.slug)
+      }
+    } else {
+      response.redirect('/posts/' + post.slug)
+    }
 
     return view.render('posts.editor', {
       post,
@@ -157,10 +166,19 @@ class PostController {
     }
   }
 
-  async destroy({ params: { id }, response }) {
+  async destroy({ params: { id }, auth, response }) {
     const post = await Post.find(id)
 
     const deleted = post.delete()
+
+    // If user isn't authorised to edit this page, then redirect them to the view post page
+    if (auth && auth.user && auth.user.id) {
+      if (auth.user.id != post.user_id) {
+        response.redirect('/posts/')
+      }
+    } else {
+      response.redirect('/posts/')
+    }
 
     return response.status(200).json({ deleted })
   }

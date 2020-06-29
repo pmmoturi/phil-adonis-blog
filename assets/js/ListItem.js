@@ -13,8 +13,8 @@ class ListItem extends Stimulus.Controller {
 
     return axios
       //.delete(`http://127.0.0.1:3333/${this.path}/${this.itemId}`)
-      .delete(`https://phil1-blog.herokuapp.com/${this.path}/${this.itemId}`)
-      //.delete(`http://${baseUrl}/${this.path}/${this.itemId}`)
+      //.delete(`https://phil1-blog.herokuapp.com/${this.path}/${this.itemId}`)
+      .delete(`/${this.path}/${this.itemId}`)
       .then(resp => {
         location.reload()
       })
