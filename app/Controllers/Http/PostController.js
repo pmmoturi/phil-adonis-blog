@@ -28,6 +28,8 @@ class PostController {
   }
 
 
+
+
   async create({ view, auth, response }) {
     response.header('Turbolinks-Location', '/posts/add')
 
@@ -119,6 +121,24 @@ class PostController {
       //posts,
       posts,
       auth
+    })
+  }
+
+
+  async showFilteredPublic({ request, view, response }) {
+    //const posts = await Post.all().then(data => data.toJSON())
+    console.log('We got here: Step 1')
+    console.log('search String: ' + request.input('searchString'))
+
+
+    const posts = await Database.table('posts').select('*')
+      .where('markdown','like','%'+request.input('searchString') + '%')
+
+
+    response.header('Turbolinks-Location', '/posts/filtered')
+
+    return view.render('posts.all', {
+      posts
     })
   }
 

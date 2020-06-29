@@ -33,6 +33,13 @@
           @endif
         </ul>
 
+        <form id="nav-bar-search" class="form-inline my-2 my-lg-0" action="/posts/filtered" method="GET">
+          <input name="searchString" class="form-control mr-sm-2" type="text" placeholder="Search"
+                 aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <div id="login-logout"></div>
         @if(auth.user.username)
           <a class="nav-link disabled" href="#">Username: {{auth.user.username}}</a>
           <form action="/logout" method="POST">
