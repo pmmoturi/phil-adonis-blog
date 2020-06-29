@@ -16,6 +16,7 @@
 const Route = use('Route')
 Route.get('/', 'PostController.homePreview')
 Route.get('categories/all', 'CategoryController.showAllPublic')
+Route.get('posts/all', 'PostController.showAllPublic')
 //Route.on('/').render('index')
 Route.on('/page').render('page')
 

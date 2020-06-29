@@ -22,7 +22,7 @@ class PostController {
 
     //const posts = await Post.all().then(data => data.toJSON())
     const categories = await Category.all().then(data => data.toJSON())
-    const posts = await Post.pickInverse(10).then(data => data.toJSON())
+    const posts = await Post.pickInverse(6).then(data => data.toJSON())
 
     return view.render('index', { posts, auth, categories })
   }
@@ -96,7 +96,6 @@ class PostController {
       const saved = await post.save()
     }
 
-
     const user_id = post.user_id
     const user = await User.findBy('id', user_id)
 
@@ -106,6 +105,20 @@ class PostController {
       post,
       categories,
       user
+    })
+  }
+
+  async showAllPublic({ view, auth, response }) {
+    const posts = await Post.all().then(data => data.toJSON())
+
+    //const posts = await Database.table('posts').select('*').where('category_id','=',category.id)
+
+    response.header('Turbolinks-Location', '/posts/all')
+
+    return view.render('posts.all', {
+      //posts,
+      posts,
+      auth
     })
   }
 
