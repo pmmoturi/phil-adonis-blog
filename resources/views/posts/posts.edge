@@ -7,6 +7,7 @@
 @section('main')
 <div class="row btlList">
     <div class="col-10">
+      @if(posts && posts.length > 0)
         <ul class="list-group">
             @each(post in posts)
                 <li class="list-group-item"
@@ -36,12 +37,17 @@
                 </li>
             @endeach
         </ul>
+      @else
+        <p>You don't have any categories, yet. <a href="/categories/add">Create your first.</a></p>
+      @endif
     </div>
+  @if(posts && posts.length > 0)
     <div class="col-2">
         <a class="btn btn-primary btlList__addNewBtn" role="button" href="/posts/add">
             <span class="text">Add Post</span>
             <span class="icon">+</span>
         </a>
     </div>
+  @endif
 </div>
 @endsection
